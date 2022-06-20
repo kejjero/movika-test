@@ -75,6 +75,7 @@ function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton, isO
                         type="button"
                         className='panel__button'
                         onClick={() => {
+                            disableDangerZone();
                             handleOnClick()
                         }}
                         style={animationOnsetButton}
