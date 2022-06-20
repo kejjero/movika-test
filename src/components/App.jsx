@@ -75,8 +75,8 @@ const App = () => {
         } else {
             setIndex(0)
         }
-        playVideo(videoRef.current)
         setTime(null);
+        playVideo(videoRef.current)
     }
 
 // Могу ошибаться, но я думаю, что здесь некорректно использую ref.
