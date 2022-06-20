@@ -12,7 +12,7 @@
   opacity: 0;
 
   &__wrapper {
-    @include flex-center-center;
+    @include flex-center-between;
     width: 100%;
   }
 
@@ -68,7 +68,7 @@
   }
 
   &__duration {
-    @include felx-center;
+    @include flex-center;
     margin: 0 auto;
     padding: 0;
     color: $purple;

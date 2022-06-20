@@ -1,6 +1,6 @@
 $purple: #FF0059;
 $white: #FFFFFF;
-$black: #00000;
+$black: #000000;
 
 @mixin flex-center-center {
   display: flex;
@@ -11,4 +11,10 @@ $black: #00000;
 @mixin flex-center {
   display: flex;
   align-items: center;
+}
+
+@mixin flex-center-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
