@@ -6,16 +6,12 @@ import PopupError from "./PopupError";
 import {videosArray} from "../videos/videos"
 
 const App = () => {
-    const videoRef = useRef(null);
+    const videoRef = useRef(null); // реф плеера
     const [duration, setDuration] = useState(0); // длина видео
     const [index, setIndex] = useState(0); // индекс текущего видео в массиве
-    const [time, setTime] = useState(); // текущее время видео
+    const [time, setTime] = useState(null); // текущее время видео
     const valueDanger = 7; // количество секунд до появления красной зоны прогресс бара
     const valueAnimationButton = 3; // количество секунд анимации кнопки плей
-
-    // Для надежности нужны проверки для подгруженного контента.
-    // Это мое предположение, возможно в реальном проекте
-    // бэкенд должен проверять видео на корректность и отправлять еще тип файла
 
     // Ожидание загрузки и получение длины видео
     useEffect(() => {
@@ -26,6 +22,8 @@ const App = () => {
                 checkTime(video)
                 playVideo(video)
             }
+        } else {
+            alert('Ошибка воспроизведения видео')
         }
     }, [])
 
@@ -88,7 +86,10 @@ const App = () => {
     return (
         <main className="content">
             <div className="player">
-                <PopupError time={time} handleOnClick={handleOnClick}/>
+                <PopupError
+                    time={time}
+                    handleOnClick={handleOnClick}
+                />
                 <video
                     className="player__video"
                     preload="metadata"
