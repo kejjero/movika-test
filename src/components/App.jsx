@@ -11,8 +11,11 @@ const App = () => {
     const [index, setIndex] = useState(0); // индекс текущего видео в массиве
     const [time, setTime] = useState(); // текущее время видео
     const valueDanger = 7; // количество секунд до появления красной зоны прогресс бара
+    const valueAnimationButton = 3; // количество секунд анимации кнопки плей
 
-    // Для надежности нужны проверки для подгруженного контента
+    // Для надежности нужны проверки для подгруженного контента.
+    // Это мое предположение, возможно в реальном проекте
+    // бэкенд должен проверять видео на корректность и отправлять еще тип файла
 
     // Ожидание загрузки и получение длины видео
     useEffect(() => {
@@ -105,6 +108,7 @@ const App = () => {
                     handleOnClick={handleOnClick}
                     index={index}
                     valueDanger={valueDanger}
+                    valuePlayButton={valueAnimationButton}
                 />
             </div>
         </main>

@@ -26,7 +26,7 @@ function PopupError({time, handleOnClick}) {
 
     return (
         isOpenPopup &&
-        <Stack sx={{width: '100%', position: 'absolute', top: '-100px'}} spacing={2}>
+        <Stack sx={{width: '100%', position: 'absolute', top: '0', zIndex: '1'}} spacing={2}>
             <Alert severity="error">
                 <AlertTitle>Вы не нажали на кнопку</AlertTitle>
                 <button type="button" onClick={() => handleClose()} style={styleButton}>Попробовать еще раз</button>
