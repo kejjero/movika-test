@@ -1,8 +1,10 @@
+@import "../variables";
+
 .player {
   position: relative;
   max-width: 667px;
   max-height: 375px;
-  background-color: #000;
+  background-color: $black;
 
 
   @media screen and (max-width: 669px) {

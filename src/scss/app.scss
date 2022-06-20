@@ -12,9 +12,7 @@ body {
 .content {
   max-width: 1280px;
   min-width: 320px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   height: 100vh;
 
   @media screen and (max-width: 667px) {
