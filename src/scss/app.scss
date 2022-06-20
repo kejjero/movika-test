@@ -1,0 +1,13 @@
+@import './components/all';
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #282c34;
+}
+
+.content {
+  max-width: 1200px;
+  min-width: 320px;
+  margin: 0 auto;
+  color: #fff;
+}

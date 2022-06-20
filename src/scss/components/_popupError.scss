@@ -1,0 +1,9 @@
+.popupError__img {
+  display: flex;
+  align-items: center;
+  width: 400px;
+
+  @media (max-width: 700px) {
+    width: 200px;
+  }
+}
