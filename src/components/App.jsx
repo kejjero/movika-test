@@ -10,6 +10,7 @@ const App = () => {
     const [duration, setDuration] = useState(0); // длина видео
     const [index, setIndex] = useState(0); // индекс текущего видео в массиве
     const [time, setTime] = useState(null); // текущее время видео
+    const [isOpen, setIsOpen] = useState(false) // открытие danger zone
     const valueDanger = 7; // количество секунд до появления красной зоны прогресс бара
     const valueAnimationButton = 3; // количество секунд анимации кнопки плей
 
@@ -89,6 +90,7 @@ const App = () => {
                 <PopupError
                     time={time}
                     handleOnClick={handleOnClick}
+                    setDangerZone={setIsOpen}
                 />
                 <video
                     className="player__video"
@@ -104,6 +106,8 @@ const App = () => {
                     Ваш браузер не поддерживает встроенные видео :(
                 </video>
                 <Panel
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
                     duration={duration}
                     time={time}
                     handleOnClick={handleOnClick}
