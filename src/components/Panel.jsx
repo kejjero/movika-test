@@ -7,12 +7,16 @@ function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton}) {
     // if(time !== null) - обертка для фикса ложного срабатывания danger zone в самом начале
     useEffect(() => {
         if (time !== null) {
-            switch (time >= valueDanger) {
-                case false: {
+            switch (!time) {
+                case (time >= valueDanger): {
                     activeDangerZone();
                     break;
                 }
-                case true: {
+                case (time < valueDanger): {
+                    disableDangerZone();
+                    break;
+                }
+                case (time === 0): {
                     disableDangerZone();
                     break;
                 }
@@ -21,7 +25,6 @@ function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton}) {
                     break;
             }
         }
-        time === 0 && disableDangerZone()
     }, [time, valueDanger])
 
     function disableDangerZone() {
