@@ -1,7 +1,8 @@
 import {useEffect, useState} from "react";
 
-function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton, isOpen, setIsOpen}) {
+function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton}) {
     const [color, setColor] = useState('#fff') // изменение цвета
+    const [isOpen, setIsOpen] = useState(false) // открытие danger zone
 
     // if(time !== null) - обертка для фикса ложного срабатывания danger zone в самом начале
     useEffect(() => {
@@ -20,6 +21,7 @@ function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton, isO
                     break;
             }
         }
+        time === 0 && disableDangerZone()
     }, [time, valueDanger])
 
     function disableDangerZone() {
@@ -75,6 +77,7 @@ function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton, isO
                         type="button"
                         className='panel__button'
                         onClick={() => {
+                            disableDangerZone();
                             handleOnClick()
                         }}
                         style={animationOnsetButton}

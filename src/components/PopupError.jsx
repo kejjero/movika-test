@@ -3,12 +3,11 @@ import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
 import {useEffect, useState} from "react";
 
-function PopupError({time, handleOnClick, setDangerZone}) {
+function PopupError({time, handleOnClick}) {
     const [isOpenPopup, setIsOpenPopup] = useState(false)
 
     useEffect(() => {
         time === 0 && setIsOpenPopup(true)
-        isOpenPopup && setDangerZone(false);
     }, [time])
 
     function handleClose () {
