@@ -35,6 +35,10 @@
     cursor: pointer;
     width: 42px;
 
+    @media screen and (max-width: 640px) {
+      width: 32px;
+    }
+
     & svg path {
       transition: fill-opacity ease-in-out 0.2s;
 

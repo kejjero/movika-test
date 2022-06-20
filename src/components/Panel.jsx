@@ -1,34 +1,37 @@
 import {useEffect, useState} from "react";
 
 function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton}) {
-    const [color, setColor] = useState('#fff')
-    const [isOpen, setIsOpen] = useState(false);
+    const [color, setColor] = useState('#fff') // изменение цвета
+    const [isOpen, setIsOpen] = useState(false) // открытие danger zone
 
+    // if(time !== null) - обертка для фикса ложного срабатывания danger zone в самом начале
     useEffect(() => {
-        switch (time >= valueDanger) {
-            case false: {
-                disableDangerZone();
-                break;
+        if (time !== null) {
+            switch (time >= valueDanger) {
+                case false: {
+                    activeDangerZone();
+                    break;
+                }
+                case true: {
+                    disableDangerZone();
+                    break;
+                }
+                default:
+                    disableDangerZone();
+                    break;
             }
-            case true: {
-                activeDangerZone();
-                break;
-            }
-            default:
-                disableDangerZone();
         }
     }, [time, valueDanger])
 
-    function activeDangerZone () {
+    function disableDangerZone() {
         setIsOpen(false)
         setColor("#fff")
     }
 
-    function disableDangerZone () {
+    function activeDangerZone() {
         setIsOpen(true)
         setColor("#FF0059")
     }
-
 
     const animationProgressBar = {
         animation: `progress ease-in-out ${duration}s`
@@ -68,11 +71,13 @@ function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton}) {
                     <p style={{color}} className="panel__duration">{time}</p>
                 </div>
                 {
-                    isOpen &&
+                    isOpen && time !== 0 &&
                     <button
                         type="button"
                         className='panel__button'
-                        onClick={() => {handleOnClick()}}
+                        onClick={() => {
+                            handleOnClick()
+                        }}
                         style={animationOnsetButton}
                     >
                         <svg viewBox="0 0 40 45" xmlns="http://www.w3.org/2000/svg">

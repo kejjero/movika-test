@@ -1,8 +1,6 @@
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
-
-
 import {useEffect, useState} from "react";
 
 function PopupError({time, handleOnClick}) {
@@ -12,10 +10,11 @@ function PopupError({time, handleOnClick}) {
         time === 0 && setIsOpenPopup(true)
     }, [time])
 
-    const handleClose = () => {
+    function handleClose () {
         setIsOpenPopup(false);
         handleOnClick();
-    };
+    }
+
     const styleButton = {
         backgroundColor: 'rgba(225, 42, 42, 0.2)',
         border: 'none',
@@ -34,4 +33,5 @@ function PopupError({time, handleOnClick}) {
         </Stack>
     )
 }
+
 export default PopupError;
