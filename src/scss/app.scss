@@ -6,15 +6,13 @@
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: #282c34;
-  color: #fff;
+  color: $white;
 }
 
 .content {
   max-width: 1280px;
   min-width: 320px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center-center;
   height: 100vh;
 
   @media screen and (max-width: 667px) {
