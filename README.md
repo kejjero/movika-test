@@ -1,4 +1,4 @@
-# 🚀 ТЗ Movica
+# 🚀 ТЗ Movika
 
 ### <img src="https://cdn-icons-png.flaticon.com/512/7135/7135133.png" width="25" />[ Ссылка на проект](https://kejjero.github.io/movika-test/)
 

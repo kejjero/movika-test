@@ -1,21 +1,41 @@
 import {useEffect, useState} from "react";
 
-function Panel({time, handleOnClick, duration, valueDanger}) {
+function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton}) {
     const [color, setColor] = useState('#fff')
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        if (time <= valueDanger) {
-            setIsOpen(true)
-            setColor("#FF0059")
-        } else {
-            setIsOpen(false)
-            setColor("#fff")
+        switch (time >= valueDanger) {
+            case false: {
+                disableDangerZone();
+                break;
+            }
+            case true: {
+                activeDangerZone();
+                break;
+            }
+            default:
+                disableDangerZone();
         }
     }, [time, valueDanger])
 
+    function activeDangerZone () {
+        setIsOpen(false)
+        setColor("#fff")
+    }
+
+    function disableDangerZone () {
+        setIsOpen(true)
+        setColor("#FF0059")
+    }
+
+
     const animationProgressBar = {
         animation: `progress ease-in-out ${duration}s`
+    }
+
+    const animationOnsetButton = {
+        animation: `buttonScale ease-in-out ${valuePlayButton}s`
     }
 
     // progress bar сделал через анимацию с clip-path, избавившись от лишних рендеров для svg
@@ -23,7 +43,7 @@ function Panel({time, handleOnClick, duration, valueDanger}) {
         <div className={`panel ${isOpen && 'panel__type_isOpen'}`}>
             <div className="panel__wrapper">
                 <div className="panel__progress-bar panel__progress-bar_left">
-                    <svg className="panel__progress-bar-svg" width="72" height="280" viewBox="0 0 62 280" fill="none"
+                    <svg className="panel__progress-bar-svg" viewBox="0 0 62 280" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M26.4609 0.500916C26.4609 0.500916 1.0154 72.1433 1.0154 142.755C1.0154 211.363 26.4609 278.998 26.4609 278.998"
@@ -53,9 +73,9 @@ function Panel({time, handleOnClick, duration, valueDanger}) {
                         type="button"
                         className='panel__button'
                         onClick={() => {handleOnClick()}}
-                        style={{animation: `buttonScale ease-in-out ${3}s`}}
+                        style={animationOnsetButton}
                     >
-                        <svg width="40" height="45" viewBox="0 0 40 45" xmlns="http://www.w3.org/2000/svg">
+                        <svg viewBox="0 0 40 45" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.833184 0.168973L39.327 21.8813L1.04571 44.2949L0.833184 0.168973Z"
                                   fill={color} fillOpacity="1"
                                   stroke="#fff" strokeWidth="1" strokeOpacity="0.3"/>

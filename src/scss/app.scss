@@ -3,11 +3,18 @@
 body {
   font-family: 'Open Sans', sans-serif;
   background-color: #282c34;
+  color: #fff;
 }
 
 .content {
-  max-width: 1200px;
+  max-width: 1280px;
   min-width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
-  color: #fff;
+
+  @media screen and (orientation:landscape) {
+    max-width: 100%;
+  }
 }
