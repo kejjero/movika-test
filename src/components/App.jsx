@@ -12,17 +12,16 @@ const App = () => {
     const [time, setTime] = useState(); // текущее время видео
     const valueDanger = 7; // количество секунд до появления красной зоны прогресс бара
 
-
-    // Для надежности нужны проверки подгруженного контента
+    // Для надежности нужны проверки для подгруженного контента
 
     // Ожидание загрузки и получение длины видео
     useEffect(() => {
         if (videoRef.current.src) {
             const video = videoRef.current
-            video.onloadedmetadata = async function () {
+            video.onloadedmetadata = function () {
                 handleCountTime(video.duration)
-                await checkTime(video)
-                await playVideo(video)
+                checkTime(video)
+                playVideo(video)
             }
         }
     }, [])
