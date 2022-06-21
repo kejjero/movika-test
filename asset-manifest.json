@@ -1,16 +1,17 @@
 {
   "files": {
-    "main.css": "/movika-test/static/css/main.eb15c230.css",
-    "main.js": "/movika-test/static/js/main.771fc85d.js",
-    "static/media/video_1.mp4": "/movika-test/static/media/video_1.2f69940d5a1cbc25f7d7.mp4",
-    "static/media/video_2.mp4": "/movika-test/static/media/video_2.34b098f28ab1f3531b21.mp4",
-    "static/media/video_3.webm": "/movika-test/static/media/video_3.cf2f8a3905396d619883.webm",
+    "main.css": "/movika-test/static/css/main.e53676e1.css",
+    "main.js": "/movika-test/static/js/main.b5d1a790.js",
+    "static/media/video_2.mp4": "/movika-test/static/media/video_2.28b65e24fe6eb99f40f8.mp4",
+    "static/media/video_3.mp4": "/movika-test/static/media/video_3.a650463d46684fc63bab.mp4",
+    "static/media/video_1.mp4": "/movika-test/static/media/video_1.ce167c3f1babcf203c18.mp4",
+    "static/media/cat.jpeg": "/movika-test/static/media/cat.927e232480c765c41e58.jpeg",
     "index.html": "/movika-test/index.html",
-    "main.eb15c230.css.map": "/movika-test/static/css/main.eb15c230.css.map",
-    "main.771fc85d.js.map": "/movika-test/static/js/main.771fc85d.js.map"
+    "main.e53676e1.css.map": "/movika-test/static/css/main.e53676e1.css.map",
+    "main.b5d1a790.js.map": "/movika-test/static/js/main.b5d1a790.js.map"
   },
   "entrypoints": [
-    "static/css/main.eb15c230.css",
-    "static/js/main.771fc85d.js"
+    "static/css/main.e53676e1.css",
+    "static/js/main.b5d1a790.js"
   ]
 }
