@@ -2,9 +2,14 @@
 
 .player {
   position: relative;
-  max-width: 667px;
-  max-height: 375px;
+  width: 667px;
+  height: 375px;
   background-color: $black;
+
+  @media screen and (max-width: 667px) {
+    width: 100vw;
+    height: auto;
+  }
 
   &__video {
     object-fit: contain;
