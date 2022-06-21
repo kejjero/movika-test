@@ -1,17 +1,16 @@
-import {videosArray} from "../videos/videos";
 import cat from "../images/cat.jpeg"
 
-function Video ({index, videoRef}) {
+function Video ({videos, index, videoRef, currentType}) {
     return(
         <video
             className="player__video"
             preload="metadata"
             muted="muted"
             ref={videoRef}
-            src={videosArray[index]}
+            src={videos[index]}
             placeholder={cat}
             autoPlay="autoplay"
-            type="video/mp4"
+            type={currentType}
             no-controls="true"
             playsInline
         >

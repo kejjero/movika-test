@@ -52,6 +52,7 @@ function Panel({time, handleNextVideo, duration, valueDanger}) {
     // который я задаю анимации с прогресс баром пойдет в рассинхрон.
     // Так что это не лучшее решение, нужно сравнивать с текущем временем
     // и высчитывать % в связке с useMemo.
+
     return (
         <div
             className={`panel ${isDangerZone && 'panel__type_isDangerZone'}`}
