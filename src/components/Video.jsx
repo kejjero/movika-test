@@ -20,7 +20,4 @@ function Video ({index, videoRef}) {
     )
 }
 
-// type="video/mp4"/>
-// type="video/webm"/>
-// type="video/ogv"/>
 export default Video;
