@@ -19,7 +19,7 @@ const App = () => {
             const video = videoRef.current
             video.onloadedmetadata = function () {
                 handleCountTime(video.duration)
-                checkTime(video)
+                checkTime(video.current)
                 playVideo()
             }
         } else {
@@ -31,12 +31,8 @@ const App = () => {
     // Обновление таймера и проверка на ноль
     useEffect(() => {
         if (videoRef.current.src) {
-            const video = videoRef.current
-            const timer = setTimeout(() => {
-                time !== 0 ? checkTime(video) : stopVideo(video)
-                return (() => {
-                    clearTimeout(timer)
-                })
+            setTimeout(() => {
+                time !== 0 ? checkTime(videoRef.current) : stopVideo()
             }, 1000)
         } else {
             alert('Ошибка воспроизведения видео')
