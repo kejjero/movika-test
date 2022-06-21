@@ -20,9 +20,8 @@ const App = () => {
         setCurrentType(getTypeVideo(index))
         if (videoRef.current.src) {
             const video = videoRef.current
-            video.onloadedmetadata = function () {
-                handleCountTime(video.duration)
-                playVideo()
+            video.onloadedmetadata = async function () {
+                await handleCountTime(video.duration)
             }
         } else {
             alert('Ошибка воспроизведения видео')
@@ -41,7 +40,6 @@ const App = () => {
             stopVideo()
         }
     }, [time])
-
 
     function playVideo() {
         videoRef.current.play();
