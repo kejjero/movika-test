@@ -3,11 +3,13 @@ import '../scss/app.scss'
 import {useEffect, useRef, useState} from "react";
 import Panel from "./Panel";
 import AlertError from "./AlertError";
-import {videosArray} from "../videos/videos"
+import {videos} from "../videos/videos"
+import {typesArray} from "../videos/videos"
 import Video from "./Video";
 
 const App = () => {
     const videoRef = useRef(null); // реф плеера
+    // const [currentType, setCurrentType] = useState(typesArray[0]) // тип обрабатываемого видео
     const [duration, setDuration] = useState(0); // длина видео
     const [index, setIndex] = useState(0); // индекс текущего видео в массиве
     const [time, setTime] = useState(null); // текущее время видео
@@ -75,7 +77,7 @@ const App = () => {
     }
 
     function getNextIndex(currentIndex) {
-        return currentIndex < videosArray.length - 1 ? currentIndex + 1 : 0;
+        return currentIndex < videos.length - 1 ? currentIndex + 1 : 0;
     }
 
     return (
@@ -88,6 +90,7 @@ const App = () => {
                 <Video
                     index={index}
                     videoRef={videoRef}
+                    videos={videos}
                 />
                 <Panel
                     duration={duration}
