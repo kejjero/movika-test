@@ -46,6 +46,12 @@ function Panel({time, handleNextVideo, duration, valueDanger}) {
 
 
     // progress bar сделал через анимацию с clip-path, избавившись от лишних рендеров для svg
+
+    // В целом локально все работает.
+    // Только я не учел того, что битрейт может тормозить видео. Тогда duration,
+    // который я задаю анимации с прогресс баром пойдет в рассинхрон.
+    // Так что это не лучшее решение, нужно сравнивать с текущем временем
+    // и высчитывать % в связке с useMemo.
     return (
         <div
             className={`panel ${isDangerZone && 'panel__type_isDangerZone'}`}
