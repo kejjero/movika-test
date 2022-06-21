@@ -4,10 +4,10 @@ import Stack from '@mui/material/Stack';
 import {useEffect, useState} from "react";
 
 function AlertError({time, handleResetVideos}) {
-    const [isOpenPopup, setIsOpenPopup] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
 
     useEffect(() => {
-        time === 0 && setIsOpenPopup(true)
+        time === 0 && setIsOpen(true)
     }, [time])
 
     const styleButton = {
@@ -18,14 +18,21 @@ function AlertError({time, handleResetVideos}) {
         padding: '5px 10px',
     }
 
+    const stackStyles = {
+        width: '100%',
+        position: 'absolute',
+        top: '0',
+        zIndex: '1',
+    }
+
     return (
-        isOpenPopup &&
-        <Stack sx={{width: '100%', position: 'absolute', top: '0', zIndex: '1'}} spacing={2}>
+        isOpen &&
+        <Stack sx={stackStyles} spacing={2}>
             <Alert severity="error">
                 <AlertTitle>Вы не нажали на кнопку</AlertTitle>
                 <button type="button" onClick={() => {
                     handleResetVideos()
-                    setIsOpenPopup(false)
+                    setIsOpen(false)
                 }} style={styleButton}>Попробовать еще раз
                 </button>
             </Alert>
