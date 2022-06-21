@@ -32,11 +32,8 @@ const App = () => {
     useEffect(() => {
         if (videoRef.current.src) {
             const video = videoRef.current
-            const timer = setTimeout(() => {
+            setTimeout(() => {
                 time !== 0 ? checkTime(video) : stopVideo(video)
-                return (() => {
-                    clearTimeout(timer)
-                })
             }, 1000)
         } else {
             alert('Ошибка воспроизведения видео')
