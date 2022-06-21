@@ -20,14 +20,14 @@ const App = () => {
         setCurrentType(getTypeVideo(index))
         if (videoRef.current.src) {
             const video = videoRef.current
-            video.onloadedmetadata = function () {
-                handleCountTime(video.duration)
+            video.onloadedmetadata = async function () {
+                await handleCountTime(video.duration)
             }
         } else {
             alert('Ошибка воспроизведения видео')
             stopVideo()
         }
-    }, [index, time])
+    }, [index])
 
     // Обновление таймера и проверка на ноль
     useEffect(() => {
