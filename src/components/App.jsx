@@ -19,7 +19,6 @@ const App = () => {
             const video = videoRef.current
             video.onloadedmetadata = function () {
                 handleCountTime(video.duration)
-                checkTime(video.current)
                 playVideo()
             }
         } else {
