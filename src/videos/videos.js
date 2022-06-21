@@ -1,5 +1,5 @@
 import video_1 from './items/video_1.mp4'
-import video_2 from './items/video_2.mp4'
+import video_2 from './items/video_2.webm'
 import video_3 from './items/video_3.mp4'
 
 const videosArray = [video_1, video_2, video_3]
@@ -11,3 +11,8 @@ export const videos =  videosArray.filter((item) => {
     const res = typesArray.indexOf(currentType)
     return res !== -1 && item
 })
+
+// Получение тип видео
+export const getTypeVideo = (i) => {
+    return videos[i].toString().split('.').pop();
+}
