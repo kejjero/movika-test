@@ -2,6 +2,7 @@
 
 .player {
   position: relative;
+  min-width: 320px;
   width: 667px;
   height: 375px;
   background-color: $black;
