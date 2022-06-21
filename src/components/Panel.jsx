@@ -1,10 +1,9 @@
 import {useEffect, useState} from "react";
 
-function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton}) {
-    const [color, setColor] = useState('#fff') // изменение цвета
-    const [isOpen, setIsOpen] = useState(false) // открытие danger zone
+function Panel({time, handleNextVideo, duration, valueDanger}) {
+    const [color, setColor] = useState('#fff')
+    const [isDangerZone, setIsDangerZone] = useState(false)
 
-    // if(time !== null) - обертка для фикса ложного срабатывания danger zone в самом начале
     useEffect(() => {
         if (time !== null) {
             switch (!time) {
@@ -28,12 +27,12 @@ function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton}) {
     }, [time, valueDanger])
 
     function disableDangerZone() {
-        setIsOpen(false)
+        setIsDangerZone(false)
         setColor("#fff")
     }
 
     function activeDangerZone() {
-        setIsOpen(true)
+        setIsDangerZone(true)
         setColor("#FF0059")
     }
 
@@ -42,12 +41,15 @@ function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton}) {
     }
 
     const animationOnsetButton = {
-        animation: `buttonScale ease-in-out ${valuePlayButton}s`
+        animation: `buttonScale ease-in-out ${0.7}s`
     }
+
 
     // progress bar сделал через анимацию с clip-path, избавившись от лишних рендеров для svg
     return (
-        <div className={`panel ${isOpen && 'panel__type_isOpen'}`}>
+        <div
+            className={`panel ${isDangerZone && 'panel__type_isDangerZone'}`}
+        >
             <div className="panel__wrapper">
                 <div className="panel__progress-bar panel__progress-bar_left">
                     <svg className="panel__progress-bar-svg" viewBox="0 0 62 280" fill="none"
@@ -75,13 +77,13 @@ function Panel({time, handleOnClick, duration, valueDanger, valuePlayButton}) {
                     <p style={{color}} className="panel__duration">{time}</p>
                 </div>
                 {
-                    isOpen &&
+                    isDangerZone &&
                     <button
                         type="button"
                         className='panel__button'
                         onClick={() => {
                             disableDangerZone();
-                            handleOnClick()
+                            handleNextVideo()
                         }}
                         style={animationOnsetButton}
                     >
