@@ -48,16 +48,13 @@ const App = () => {
     function stopVideo() {
         videoRef.current.pause();
         videoRef.current.currentTime = 0;
-        setDuration(null)
     }
 
     // Функция счетчика времени
-    function checkTime(video) {
-        if (video.currentTime && video.duration) {
-            const currentTime = Math.ceil(video.currentTime);
-            const durationVideo = Math.ceil(video.duration);
-            setTime(durationVideo - currentTime)
-        }
+    function checkTime() {
+        const currentTime = Math.ceil(videoRef.current.currentTime);
+        const durationVideo = Math.ceil(videoRef.current.duration);
+        setTime(durationVideo - currentTime)
     }
 
     // Функция получения длины видео
