@@ -76,21 +76,16 @@ const App = () => {
         setTime(null)
     }
 
-    function handleResetVideos()  {
+    function handleResetVideos() {
         setTime(null)
         setIndex(0)
         playVideo();
     }
 
-
     function getNextIndex(currentIndex) {
-        return currentIndex < videosArray.length - 1 ? currentIndex + 1 :  0;
+        return currentIndex < videosArray.length - 1 ? currentIndex + 1 : 0;
     }
 
-// Могу ошибаться, но я думаю, что здесь некорректно использую ref.
-// Так как получаю элемент video, а не source.
-// Значит type не задается конкретному видео.
-// Но при этом браузер корректно воспроизводит оба формата.
     return (
         <main className="content">
             <div className="player">
