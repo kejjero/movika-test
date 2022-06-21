@@ -2,16 +2,16 @@ import '../vendor/normalize.css'
 import '../scss/app.scss'
 import {useEffect, useRef, useState} from "react";
 import Panel from "./Panel";
-import PopupError from "./PopupError";
+import AlertError from "./AlertError";
 import {videosArray} from "../videos/videos"
+import Video from "./Video";
 
 const App = () => {
     const videoRef = useRef(null); // реф плеера
     const [duration, setDuration] = useState(0); // длина видео
     const [index, setIndex] = useState(0); // индекс текущего видео в массиве
     const [time, setTime] = useState(null); // текущее время видео
-    const valueDanger = 7; // количество секунд до появления красной зоны прогресс бара
-    const valueAnimationButton = 3; // количество секунд анимации кнопки плей
+    const valueDanger = 12; // количество секунд до появления красной зоны прогресс бара
 
     // Ожидание загрузки и получение длины видео
     useEffect(() => {
@@ -20,17 +20,18 @@ const App = () => {
             video.onloadedmetadata = function () {
                 handleCountTime(video.duration)
                 checkTime(video)
-                playVideo(video)
+                playVideo()
             }
         } else {
             alert('Ошибка воспроизведения видео')
+            stopVideo()
         }
-    }, [])
+    }, [index])
 
     // Обновление таймера и проверка на ноль
     useEffect(() => {
         if (videoRef.current.src) {
-            const video = videoRef.current;
+            const video = videoRef.current
             const timer = setTimeout(() => {
                 time !== 0 ? checkTime(video) : stopVideo(video)
                 return (() => {
@@ -39,17 +40,18 @@ const App = () => {
             }, 1000)
         } else {
             alert('Ошибка воспроизведения видео')
+            stopVideo()
         }
     }, [time])
 
 
-    function playVideo(video) {
-        video.play();
+    function playVideo() {
+        videoRef.current.play();
     }
 
-    function stopVideo(video) {
-        video.pause();
-        video.currentTime = 0;
+    function stopVideo() {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
         setDuration(null)
     }
 
@@ -63,20 +65,26 @@ const App = () => {
     }
 
     // Функция получения длины видео
-    const handleCountTime = (value) => {
+    function handleCountTime(value) {
         const durationCeil = Math.ceil(value)
         setDuration(durationCeil)
     }
 
-    // Функция клика на кнопку
-    const handleOnClick = () => {
-        if (index < videosArray.length - 1) {
-            setIndex(index + 1)
-        } else {
-            setIndex(0)
-        }
-        setTime(null);
-        playVideo(videoRef.current)
+    // Обработка успешного клика на кнопку
+    function handleNextVideo() {
+        setIndex(getNextIndex(index))
+        setTime(null)
+    }
+
+    function handleResetVideos()  {
+        setTime(null)
+        setIndex(0)
+        playVideo();
+    }
+
+
+    function getNextIndex(currentIndex) {
+        return currentIndex < videosArray.length - 1 ? currentIndex + 1 :  0;
     }
 
 // Могу ошибаться, но я думаю, что здесь некорректно использую ref.
@@ -86,30 +94,20 @@ const App = () => {
     return (
         <main className="content">
             <div className="player">
-                <PopupError
+                <AlertError
                     time={time}
-                    handleOnClick={handleOnClick}
+                    handleResetVideos={handleResetVideos}
                 />
-                <video
-                    className="player__video"
-                    preload="metadata"
-                    muted="muted"
-                    ref={videoRef}
-                    src={videosArray[index]}
-                    autoPlay="autoplay"
-                >
-                    <source src={videosArray[index]} type="video/mp4"/>
-                    <source src={videosArray[index]} type="video/webm"/>
-                    <source src={videosArray[index]} type="video/ogv"/>
-                    Ваш браузер не поддерживает встроенные видео :(
-                </video>
+                <Video
+                    index={index}
+                    videoRef={videoRef}
+                />
                 <Panel
                     duration={duration}
                     time={time}
-                    handleOnClick={handleOnClick}
+                    handleNextVideo={handleNextVideo}
                     index={index}
                     valueDanger={valueDanger}
-                    valuePlayButton={valueAnimationButton}
                 />
             </div>
         </main>
