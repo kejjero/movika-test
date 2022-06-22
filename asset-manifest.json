@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/movika-test/static/css/main.3ec22bae.css",
-    "main.js": "/movika-test/static/js/main.5962be52.js",
-    "static/media/video_2.mp4": "/movika-test/static/media/video_2.28b65e24fe6eb99f40f8.mp4",
+    "main.js": "/movika-test/static/js/main.93a1e689.js",
+    "static/media/video_2.webm": "/movika-test/static/media/video_2.59cad661efd99ea0ee9d.webm",
     "static/media/video_3.mp4": "/movika-test/static/media/video_3.a650463d46684fc63bab.mp4",
     "static/media/video_1.mp4": "/movika-test/static/media/video_1.ce167c3f1babcf203c18.mp4",
     "static/media/test.jpeg": "/movika-test/static/media/test.1dc739272396e9bc381d.jpeg",
     "static/media/cat.jpeg": "/movika-test/static/media/cat.927e232480c765c41e58.jpeg",
     "index.html": "/movika-test/index.html",
     "main.3ec22bae.css.map": "/movika-test/static/css/main.3ec22bae.css.map",
-    "main.5962be52.js.map": "/movika-test/static/js/main.5962be52.js.map"
+    "main.93a1e689.js.map": "/movika-test/static/js/main.93a1e689.js.map"
   },
   "entrypoints": [
     "static/css/main.3ec22bae.css",
-    "static/js/main.5962be52.js"
+    "static/js/main.93a1e689.js"
   ]
 }
